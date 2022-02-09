@@ -12,8 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-module.exports = {
-  iterations: 1000,
-  parallelQueries: 25,
-  runs: 10
-};
+"use strict";
+
+const doxbee = require("../lib/doxbee-es5.js");
+const measure = require("../lib/measure-promises.js");
+
+measure(doxbee, "b", "c")
+  .then(time => console.log(`Time(doxbee-promises-es5-native): ${time} ms.`))
+  .catch(reason => console.error(reason));

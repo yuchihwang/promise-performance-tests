@@ -17,10 +17,18 @@
 const cp = require('child_process');
 const fs = require('fs');
 
-const BENCHMARKS = fs.readdirSync('src')
-  .filter(filename => filename.endsWith('.js'))
-  .map(filename => `./src/${filename}`);
-BENCHMARKS.sort();
+// const BENCHMARKS = fs.readdirSync('src')
+//   .filter(filename => filename.endsWith('.js'))
+//   .map(filename => `./src/${filename}`);
+// BENCHMARKS.sort();
+
+const BENCHMARKS = [
+  'parallel-promises-cls-legacy.js',
+  'parallel-promises-cls-hooked.js',
+  'parallel-promises-cls-hooked-min.js',
+  'parallel-promises-async-hook.js',
+  'parallel-promises-es2015-native.js'
+].map(filename => `./src/${filename}`);
 
 try {
   for (const benchmark of BENCHMARKS) {
